@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewpoint" content="width=device-width, inital-scale=1.0">
-        <title>Trading App Website Design</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Stocks</title>
 
-        <!-- css file link -->
-         <link rel="stylesheet" href="style.css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
 
-         <link rel="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+  <!-- Font Awesome (optional; safe to keep even without icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"
+  />
+</head>
+<body>
 
-            
-    </head>
-    <body>
-        <section class="header">
-            
-            
-            <nav>
-                <h3>E-Stocks</h3>
-        
-                <div class="nav-links" id=""navLinks>
-                    <i class="fa fa-times" onclick="hideMenu()"></i>
-                        <ul>
-                            <li><a href="index.html">HOME</a></li>
-                            <li><a href="about.html">ABOUT</a></li>
-                            <li><a href="Market.html">MARKET</a></li>
-                            <li><a href="Portfolio.html">PORTFOLIO</a></li>
-                            <li><a href="Login.html">LOGIN</a></li>
-                        </ul>
-                </div>
-                <i class="fa fa-bars" onclick="showMenu()"></i>
-            </nav>
+  <!-- HERO / HEADER -->
+  <section class="header">
+    <nav>
+      <h3 class="brand">E-Stocks</h3>
 
-            <div class="text-box">
+      <div class="nav-links" id="navLinks">
+        <!-- Removed the X/☰ icons -->
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="Market.html">MARKET</a></li>
+          <li><a href="Portfolio.html">PORTFOLIO</a></li>
+          <li><a href="Login.html" id="navLogin">LOGIN</a></li>
+<li><a href="#" id="navLogout" onclick="logout()" style="display:none">LOG OUT</a></li>
 
-                <h1>Welcome</h1>
-                <p>Start your trading journey</p>
-                <a href="join.html" class="join-btn">Join Here</a>
-            </div>
 
-        </section>
+        </ul>
+      </div>
+    </nav>
 
-      
+    <div class="text-box">
+      <h1>Welcome</h1>
+      <p>Start your trading journey</p>
+      <a href="join.html" class="join-btn">Join Here</a>
+    </div>
+  </section>
 
-    </body>
-    </html>
+</body>
+</html>

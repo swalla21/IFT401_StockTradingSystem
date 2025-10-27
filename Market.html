@@ -14,20 +14,53 @@
     </head>
     <body>
         <section class="header">
-            
-            
-            <nav>
-                <h3>E-Stocks</h3>
-              <!--<a href=index.html><img src="Downloads/skyline.jpg"></ahref>-->
-                <div class="nav-links" id=""navLinks>
-                    <i class="fa fa-times" onclick="hideMenu()"></i>
-                        <ul>
-                            <li><a href="index.html">HOME</a></li>
-                            <li><a href="about.html">ABOUT</a></li>
-                            <li><a href="Market.html">MARKET</a></li>
-                            <li><a href="Portfolio.html">PORTFOLIO</a></li>
-                            <li><a href="Login.html">LOGIN</a></li>
-                        </ul>
-                </div>
-                <i class="fa fa-bars" onclick="showMenu()"></i>
-            </nav>
+  <nav>
+    <h3 class="brand">E-Stocks</h3>
+    <div class="nav-links">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="Market.html">MARKET</a></li>
+        <li><a href="Portfolio.html">PORTFOLIO</a></li>
+        <li><a href="Login.html" id="navLogin">LOGIN</a></li>
+<li><a href="#" id="navLogout" onclick="logout()" style="display:none">LOG OUT</a></li>
+
+
+      </ul>
+    </div>
+  </nav>
+
+  <div style="padding: 20px 6%; position:relative; z-index:1;">
+    <div class="role-chip" id="roleChip">Role: Guest</div>
+    <div style="height:16px"></div>
+
+    <!-- Controls -->
+    <div class="card" style="padding:14px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);border-radius:14px;">
+      <h3 style="margin-bottom:10px;">Market</h3>
+
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <input id="mktTicker" placeholder="Ticker (e.g. AAPL)" style="flex:1;min-width:180px;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:#fff;">
+        <input id="mktPrice" type="number" step="0.01" min="0" placeholder="Price (optional)" style="width:180px;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:#fff;">
+        <button class="btn" style="border:none;border-radius:12px;padding:10px 14px;" onclick="addMarketTicker()">Add</button>
+        <button class="btn" style="border:none;border-radius:12px;padding:10px 14px;" onclick="refreshMarketPrices()">Refresh Prices</button>
+        <button class="btn" style="border:none;border-radius:12px;padding:10px 14px;" onclick="seedMarket()">Load Sample</button>
+      </div>
+
+      <div id="mktMsg" class="note" style="margin-top:8px;opacity:.9;"></div>
+
+      <div style="height:12px"></div>
+      <table id="marketTable" border="0" cellpadding="10" style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Ticker</th>
+            <th style="text-align:left;">Price</th>
+            <th style="text-align:left;">Change</th>
+            <th style="text-align:left;">Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<script src="script.js"></script>

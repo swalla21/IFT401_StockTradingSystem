@@ -1,38 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewpoint" content="width=device-width, inital-scale=1.0">
-        <title>Trading App Website Design</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trading App Website Design</title>
 
-        <!-- css file link -->
-         <link rel="stylesheet" href="style.css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
 
-         <link rel="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+  <!-- Font Awesome (safe to keep even if not using icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"
+  />
+</head>
+<body>
+  <section class="header">
+    <nav>
+      <h3 class="brand">E-Stocks</h3>
+      <div class="nav-links" id="navLinks">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="Market.html">MARKET</a></li>
+          <li><a href="Portfolio.html">PORTFOLIO</a></li>
+          <li><a href="Login.html" id="navLogin">LOGIN</a></li>
+          <li><a href="#" id="navLogout" onclick="logout()" style="display:none">LOG OUT</a></li>
+        </ul>
+      </div>
+    </nav>
 
-            
-    </head>
-    <body>
-        <section class="header">
-            
-            
-            <nav>
-                <h3>E-Stocks</h3>
-              <!--<a href=index.html><img src="Downloads/skyline.jpg"></ahref>-->
-                <div class="nav-links" id=""navLinks>
-                    <i class="fa fa-times" onclick="hideMenu()"></i>
-                        <ul>
-                           <li><a href="index.html">HOME</a></li>
-                            <li><a href="about.html">ABOUT</a></li>
-                            <li><a href="Market.html">MARKET</a></li>
-                            <li><a href="Portfolio.html">PORTFOLIO</a></li>
-                            <li><a href="Login.html">LOGIN</a></li>
-                        </ul>
-                </div>
-                <i class="fa fa-bars" onclick="showMenu()"></i>
-            </nav>
-        </section>
-        
-    </body>    
-    
-    </html>
+    <!-- Portfolio content -->
+    <div style="padding: 20px 6%; position:relative; z-index:1;">
+      <!-- Role -->
+      <div id="roleChip" class="role-chip">Role: Guest</div>
+
+      <!-- NEW: Balance chip + toggle -->
+      <div style="height:10px"></div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <div id="balanceChip" class="role-chip">Balance: ••••</div>
+        <button id="toggleBalBtn" class="btn" onclick="toggleBalance()" style="border:none;border-radius:12px;padding:6px 10px;">
+          Show Balance
+        </button>
+      </div>
+
+      <div style="height:16px"></div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+        <!-- Deposit -->
+        <div class="card" style="padding:14px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);border-radius:14px;">
+          <h3>Deposit</h3>
+          <input id="depAmt" type="number" min="1" placeholder="Amount" class="input"
+                 style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:#fff;">
+          <div style="height:8px"></div>
+          <button onclick="deposit()" class="btn" style="border:none;border-radius:12px;padding:10px 14px;">Add Funds</button>
+          <div id="depMsg" class="note" style="margin-top:6px;opacity:.85"></div>
+        </div>
+
+        <!-- Buy -->
+        <div class="card" style="padding:14px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);border-radius:14px;">
+          <h3>Buy</h3>
+          <div style="display:flex;gap:8px">
+            <input id="buyTicker" placeholder="Ticker" class="input"
+                   style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:#fff;">
+            <input id="buyQty" type="number" min="1" placeholder="Qty" class="input"
+                   style="width:120px;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:#fff;">
+          </div>
+          <div style="height:8px"></div>
+          <button onclick="buy()" class="btn" style="border:none;border-radius:12px;padding:10px 14px;">Place Buy</button>
+          <div id="buyMsg" class="note" style="margin-top:6px;opacity:.85"></div>
+        </div>
+
+        <!-- Sell -->
+        <div class="card" style="padding:14px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);border-radius:14px;">
+          <h3>Sell</h3>
+          <div style="display:flex;gap:8px">
+            <input id="sellTicker" placeholder="Ticker" class="input"
+                   style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:#fff;">
+            <input id="sellQty" type="number" min="1" placeholder="Qty" class="input"
+                   style="width:120px;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:#fff;">
+          </div>
+          <div style="height:8px"></div>
+          <button onclick="sell()" class="btn" style="border:none;border-radius:12px;padding:10px 14px;">Place Sell</button>
+          <div id="sellMsg" class="note" style="margin-top:6px;opacity:.85"></div>
+        </div>
+      </div>
+
+      <div style="height:16px"></div>
+      <div class="card" style="padding:14px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);border-radius:14px;">
+        <h3>Positions</h3>
+        <table id="posTable" border="0" cellpadding="8" style="width:100%;border-collapse:collapse">
+          <thead><tr><th style="text-align:left">Ticker</th><th style="text-align:left">Qty</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- App logic (login/role + deposit/buy/sell + render) -->
+  <script src="script.js"></script>
+</body>
+</html>
